@@ -1,0 +1,1 @@
+console.log("้hollo from java script");
