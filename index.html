@@ -1,19 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>แบบฟอร์มข้อมูลนักเรียน</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+
+    table th, table td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+      background-color: #009879;
+      color: white;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    table tr:hover {
+      background-color: #e0f7fa;
+    }
+  </style>
 </head>
 <body>
-    <h1>ไก่อย้างสวมตาม</h1>
-    
-    <script src="script.js"></script>
 
- <div class="kom">
-    <h2>London</h2>
-  <p>London is the capital of England.</p>
- </div>
-    </body>
+  <div class="container">
+    <h2>แบบฟอร์มกรอกข้อมูลนักเรียน</h2>
+    <form id="studentForm">
+      <label for="stdID">รหัสนักเรียน (stdID):</label>
+      <input type="text" id="stdID" required>
+
+      <label for="name">ชื่อ-นามสกุล (Name):</label>
+      <input type="text" id="name" required>
+
+      <label for="age">อายุ (Age):</label>
+      <input type="number" id="age" required>
+
+      <label for="tell">เบอร์โทร (Tell):</label>
+      <input type="text" id="tell" required>
+
+      <button type="submit">เพิ่มข้อมูล</button>
+    </form>
+
+    <table id="studentTable">
+      <thead>
+        <tr>
+          <th>stdID</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Tell</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ข้อมูลจะแสดงที่นี่ -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const form = document.getElementById("studentForm");
+    const tableBody = document.querySelector("#studentTable tbody");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const stdID = document.getElementById("stdID").value;
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      const tell = document.getElementById("tell").value;
+
+      const row = tableBody.insertRow();
+      row.insertCell(0).textContent = stdID;
+      row.insertCell(1).textContent = name;
+      row.insertCell(2).textContent = age;
+      row.insertCell(3).textContent = tell;
+
+      form.reset();
+    });
+  </script>
+
+</body>
 </html>
